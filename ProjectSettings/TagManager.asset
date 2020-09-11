@@ -8,6 +8,7 @@ TagManager:
   - Boost
   - Water
   - Money
+  - UpgradeButton
   layers:
   - Default
   - TransparentFX

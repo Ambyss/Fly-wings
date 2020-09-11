@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private Vector2 _rotationAcceleration;
     public Canvas canvas;
     private bool _acceleration;
-    
+
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();

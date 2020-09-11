@@ -14,6 +14,6 @@ public class Water : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = new Vector2(_player.position.x, transform.position.y);
+        transform.position = new Vector2(_player.position.x, -17);
     }
 }
