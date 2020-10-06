@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    private int _boostPower;
-    private int _moneyCost;
+    private InfoContainer _infoContainer;
+    public float boostPower;
     private float _boostFrequency;
     private float _moneyFrequency;
     private int _money;
@@ -21,7 +22,16 @@ public class LevelManager : MonoBehaviour
     private int _tempDistance;
     private Vector3 _tempPosition;
     [SerializeField] private GameObject _finishGround;
-    
+    private List<Upgrades> _upgrades = new List<Upgrades>(8);
+    public float _maxFuel;
+    private int _moneyForLevel;
+    [SerializeField] private Canvas _lvlEndsCanvas;
+    [SerializeField] private Canvas _upgradeCanvas;
+    [SerializeField] private Text _lvlEndsMoney;
+    [SerializeField] private Text _lvlEndsDistance;
+    [SerializeField] private Text _lvlEndsAltitude;
+    private int _maxHeight;
+    private UpgradeSystem _upgradeSystem;
     
     private void Awake()
     {
@@ -30,7 +40,15 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        _infoContainer = InfoContainer.Instance;
+        _upgrades = _infoContainer.GetUpgrades();
+        _moneyForLevel = 0;
+        _lvlEndsCanvas.enabled = false;
+        _upgradeCanvas.enabled = true;
         DrawMoney();
+        Time.timeScale = 0;
+        _maxHeight = 0;
+        _upgradeSystem = GameObject.Find("UpgradeSystem").GetComponent<UpgradeSystem>();
     }
 
     private void FixedUpdate()
@@ -38,20 +56,24 @@ public class LevelManager : MonoBehaviour
         _tempPosition = _player.position;
         distanceText.text = "Dist. " + ((int)_tempPosition.x).ToString();
         heightText.text = "Alt. " + ((int)_tempPosition.y).ToString();
+        if (_tempPosition.y > _maxHeight)
+            _maxHeight = (int)_tempPosition.y;
         if (_tempPosition.x > distance)
             _finishGround.GetComponent<FinishGround>().StartShowing();
     }
     
     private void TemporaryInitializationDeleteMeBeforeBuildPls()
     {
-        _boostPower = 550;
-        _moneyCost = 1;
+        // TODO: change to info container
+        _money = 500;
+        
         _boostFrequency = 10;
         _moneyFrequency = 10;
-        _money = 500;
-        _currentLevel = 1; // TODO: change to info container
+        
+        _currentLevel = 1; 
         _height = 2000;
         distance = 2000;
+        _maxFuel = 500;
         _player = GameObject.Find("Player").GetComponent<Transform>();
     }
 
@@ -60,19 +82,39 @@ public class LevelManager : MonoBehaviour
         _moneyText.text = _money.ToString();
     }
     
-    public int GetBoostPower()
+    public float GetBoostPower()
     {
-        return _boostPower;
+        Debug.Log(boostPower);
+        return boostPower;
     }
 
+    public void SetBoostPower(float boostPower)
+    {
+        this.boostPower = boostPower;
+    }
+    
     public void GameEnds(bool isWin)
     {
         if (isWin)
-            Debug.Log("End Game");
-        else 
-            Debug.Log("Crash");
+        {
+            _currentLevel++;
+        }
+        Debug.Log(_money);
+        Debug.Log(_moneyForLevel);
+        _money += _moneyForLevel;
+        DrawMoney();
+        StartCoroutine(EndGame());
     }
 
+    private IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(2);
+        _lvlEndsCanvas.enabled = true;
+        _lvlEndsAltitude.text = "Altitude: " + _maxHeight.ToString();
+        _lvlEndsDistance.text = "Distance: " + ((int)_tempPosition.x).ToString();
+        _lvlEndsMoney.text = "Money: " + _moneyForLevel.ToString();
+    }
+    
     public int GetMoney()
     {
         return _money;
@@ -81,6 +123,33 @@ public class LevelManager : MonoBehaviour
     public void SpendMoney(int howMuchMoney)
     {
         _money -= howMuchMoney;
-        Debug.Log(_money);
+        DrawMoney();
+    }
+
+    public List<Upgrades> GetUpgrades()
+    {
+        return _upgrades;
+    }
+
+    public void AddMoney()
+    {
+        _moneyForLevel++;
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void LoadLevelScene()
+    {
+        SceneManager.LoadScene("Lvl1");
+    }
+
+    public void PlayGame()
+    {
+        _upgradeCanvas.enabled = false;
+        Time.timeScale = 1;
+        _upgradeSystem.ApplyUpgrades();
     }
 }

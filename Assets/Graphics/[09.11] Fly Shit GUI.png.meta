@@ -1,0 +1,488 @@
+fileFormatVersion: 2
+guid: 8f8c76a40cf08cc47aa1c919c8d2fcdc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7698774067084951908
+    second: '[09.11] Fly Shit GUI_0'
+  - first:
+      213: 6727741177414298537
+    second: '[09.11] Fly Shit GUI_1'
+  - first:
+      213: 5644354798593604625
+    second: '[09.11] Fly Shit GUI_2'
+  - first:
+      213: -7174746784787366779
+    second: '[09.11] Fly Shit GUI_3'
+  - first:
+      213: -3534519595284163174
+    second: '[09.11] Fly Shit GUI_4'
+  - first:
+      213: 4789449843108716942
+    second: '[09.11] Fly Shit GUI_5'
+  - first:
+      213: -3045962567616242748
+    second: '[09.11] Fly Shit GUI_6'
+  - first:
+      213: -5682603163818119729
+    second: '[09.11] Fly Shit GUI_7'
+  - first:
+      213: -667736860749370574
+    second: '[09.11] Fly Shit GUI_8'
+  - first:
+      213: -6817065557132729715
+    second: '[09.11] Fly Shit GUI_9'
+  - first:
+      213: -5321732400643975690
+    second: '[09.11] Fly Shit GUI_10'
+  - first:
+      213: -8478413750209888600
+    second: '[09.11] Fly Shit GUI_11'
+  - first:
+      213: -5831984843793456603
+    second: '[09.11] Fly Shit GUI_12'
+  - first:
+      213: -2976633438229017075
+    second: '[09.11] Fly Shit GUI_13'
+  - first:
+      213: -1914846375638814042
+    second: '[09.11] Fly Shit GUI_14'
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_2'
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 4249
+        width: 239
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c7174c8c6c45e40800000000000000
+      internalID: 5644354798593604625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_3'
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 4224
+        width: 304
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c7f5b00dd2e6c90800000000000000
+      internalID: -7174746784787366779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_4'
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 4233
+        width: 248
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a951e6f972dd2fec0800000000000000
+      internalID: -3534519595284163174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_5'
+      rect:
+        serializedVersion: 2
+        x: 2126
+        y: 2855
+        width: 1434
+        height: 1437
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e81ab08b14b877240800000000000000
+      internalID: 4789449843108716942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_6'
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 2700
+        width: 305
+        height: 668
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cbd816de219ab5d0800000000000000
+      internalID: -3045962567616242748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_7'
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 3077
+        width: 328
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd2c1db7865321b0800000000000000
+      internalID: -5682603163818119729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_8'
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 3024
+        width: 374
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23b699becd8bbb6f0800000000000000
+      internalID: -667736860749370574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_9'
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 3068
+        width: 264
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d82ad808efae461a0800000000000000
+      internalID: -6817065557132729715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_10'
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 2560
+        width: 711
+        height: 435
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f5ddedc3986526b0800000000000000
+      internalID: -5321732400643975690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_11'
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1261
+        width: 1053
+        height: 1193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aeb3ff5d9f965a80800000000000000
+      internalID: -8478413750209888600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_12'
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 1296
+        width: 1041
+        height: 1193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522aa3a0fa0a01fa0800000000000000
+      internalID: -5831984843793456603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_13'
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1064
+        height: 1190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0e4fc7a8afd0b6d0800000000000000
+      internalID: -2976633438229017075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_14'
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 0
+        width: 2216
+        height: 1192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a2ba9cdd591d65e0800000000000000
+      internalID: -1914846375638814042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_0'
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 4253
+        width: 238
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e796d96c5782590800000000000000
+      internalID: -7698774067084951908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[09.11] Fly Shit GUI_1'
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 3495
+        width: 1886
+        height: 706
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ab2c8ca4fcbd5d50800000000000000
+      internalID: 6727741177414298537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,7 +23,7 @@ public class UpgradeButton : Upgrades
 
     IEnumerator StartInit()
     {
-        yield return new WaitForSeconds(.05f);
+        yield return new WaitForSecondsRealtime(.01f);
         UpdateData();
     }
     
