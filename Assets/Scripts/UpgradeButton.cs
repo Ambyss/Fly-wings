@@ -73,7 +73,7 @@ public class UpgradeButton : Upgrades
 
     public void OnClick()
     {
-        if (_upgradeSystem.IsEnoughMoney(_cost))
+        if (_upgradeSystem.IsEnoughMoney(_cost) && currentUpgrade < maxUpgrades)
             _upgradeSystem.Upgrade(upgradeName);
     }
 }

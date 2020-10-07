@@ -162,6 +162,7 @@ MonoBehaviour:
   _lvlEndsMoney: {fileID: 801425625}
   _lvlEndsDistance: {fileID: 479622767}
   _lvlEndsAltitude: {fileID: 2101609717}
+  _ground: {fileID: 1605763049}
 --- !u!4 &106937
 Transform:
   m_ObjectHideFlags: 0
@@ -5112,6 +5113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba5929e9cd10cb4c8441238a8f68cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
 --- !u!4 &322548316
 Transform:
   m_ObjectHideFlags: 0
@@ -5157,9 +5159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   go:
-  - {fileID: 4006316690895932334, guid: 789deabdc6470404297c0f0abadadc00, type: 3}
-  - {fileID: 381301672024159925, guid: 6db2b243144871c4a8b6b534e449a42e, type: 3}
   - {fileID: 123856844834926456, guid: 67aa651436d59cf428ffc50efdd5b6d5, type: 3}
+  - {fileID: 4006316690895932334, guid: 789deabdc6470404297c0f0abadadc00, type: 3}
 --- !u!212 &339509550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5200,7 +5201,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 390ef19fedd6daf43883fd7e379c1386, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.18431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5374,6 +5375,7 @@ MonoBehaviour:
   currentUpgrade: 0
   maxUpgrades: 0
   startCost: 0
+  startValue: 0
 --- !u!1 &356346399
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,6 +6332,7 @@ MonoBehaviour:
   currentUpgrade: 0
   maxUpgrades: 0
   startCost: 0
+  startValue: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -6467,7 +6470,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -6523,7 +6526,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 390ef19fedd6daf43883fd7e379c1386, type: 3}
-  m_Color: {r: 0.4575472, g: 0.66396564, b: 1, a: 1}
+  m_Color: {r: 0.4575472, g: 0.66396564, b: 1, a: 0.45490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -6541,8 +6544,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555505638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 158.3, y: -29, z: 0}
-  m_LocalScale: {x: 100, y: 30, z: 1}
+  m_LocalPosition: {x: 158.3, y: -63.06, z: 0}
+  m_LocalScale: {x: 100, y: 98.1121, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -6775,6 +6778,7 @@ MonoBehaviour:
   currentUpgrade: 0
   maxUpgrades: 0
   startCost: 0
+  startValue: 0
 --- !u!1 &694209497
 GameObject:
   m_ObjectHideFlags: 0
@@ -7242,6 +7246,7 @@ MonoBehaviour:
   currentUpgrade: 0
   maxUpgrades: 0
   startCost: 0
+  startValue: 0
 --- !u!114 &893670808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8578,6 +8583,7 @@ RectTransform:
   - {fileID: 1124656883}
   - {fileID: 2081780706}
   - {fileID: 422520763}
+  - {fileID: 1570288078}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8652,6 +8658,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1570288077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570288078}
+  - component: {fileID: 1570288080}
+  - component: {fileID: 1570288079}
+  m_Layer: 5
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1570288078
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570288077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1467588985}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 167.00002}
+  m_SizeDelta: {x: 600, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1570288079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570288077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.19339621, b: 0.19339621, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Ground reached!
+--- !u!222 &1570288080
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1570288077}
+  m_CullTransparentMesh: 0
 --- !u!1 &1591254952
 GameObject:
   m_ObjectHideFlags: 0
@@ -8851,6 +8935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268d34ecf9fae8c478116aea0f41bfeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundReached: {fileID: 1570288079}
 --- !u!1 &1628413782
 GameObject:
   m_ObjectHideFlags: 0
@@ -9149,6 +9234,7 @@ MonoBehaviour:
   currentUpgrade: 0
   maxUpgrades: 0
   startCost: 0
+  startValue: 0
 --- !u!1 &1674447515
 GameObject:
   m_ObjectHideFlags: 0
@@ -9652,6 +9738,7 @@ MonoBehaviour:
   currentUpgrade: 0
   maxUpgrades: 0
   startCost: 0
+  startValue: 0
 --- !u!1 &1847202578
 GameObject:
   m_ObjectHideFlags: 0
@@ -10241,6 +10328,7 @@ MonoBehaviour:
   currentUpgrade: 0
   maxUpgrades: 0
   startCost: 0
+  startValue: 0
 --- !u!1 &2101609715
 GameObject:
   m_ObjectHideFlags: 0
@@ -10469,6 +10557,7 @@ MonoBehaviour:
   currentUpgrade: 0
   maxUpgrades: 0
   startCost: 0
+  startValue: 0
 --- !u!1 &2145103632
 GameObject:
   m_ObjectHideFlags: 0

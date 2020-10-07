@@ -35,6 +35,8 @@ public class UpgradeSystem : MonoBehaviour
     private float enginePower;
     private float acceleration;
     private float boostPower;
+    private float moneyFrequency;
+    private float wings;
     private Player _player;
     
     private void Start()
@@ -61,13 +63,10 @@ public class UpgradeSystem : MonoBehaviour
     
     public void ApplyUpgrades()
     {
-        for (int i = 0; i < _upgrades.Count; i++)
-        {
-            Debug.Log(_upgrades[i].startCost);
-        }
         UpgradeProgression();
-        _player.ApplyUpgrades(jumpForce, rotationSpeed, fuelUsage, enginePower, acceleration);
+        _player.ApplyUpgrades(jumpForce, rotationSpeed, fuelUsage, enginePower, acceleration, wings);
         _lvlManager.SetBoostPower(boostPower);
+        GameObject.Find("Spawner").GetComponent<Spawner>()._moneyFrequency = moneyFrequency;
     }
     
     public void GiveMeInfo(Upgrades.Name name, out int currentUpgrade,out int maxUpgrades, out int cost)
@@ -94,21 +93,21 @@ public class UpgradeSystem : MonoBehaviour
         switch (name)
         {
             case Upgrades.Name.Boost:
-                return _upgrades[tempIndex].currentUpgrade * 2 * _upgrades[tempIndex].startCost;
+                return _upgrades[tempIndex].startCost + _upgrades[tempIndex].currentUpgrade * 2 * _upgrades[tempIndex].startCost;
             case Upgrades.Name.Wing:
-                return _upgrades[tempIndex].currentUpgrade * 3 + _upgrades[tempIndex].startCost;
+                return _upgrades[tempIndex].startCost +  _upgrades[tempIndex].currentUpgrade * 3 + _upgrades[tempIndex].startCost;
             case Upgrades.Name.Fuel:
-                return _upgrades[tempIndex].currentUpgrade * 4 * _upgrades[tempIndex].startCost;
+                return _upgrades[tempIndex].startCost +  _upgrades[tempIndex].currentUpgrade * 4 * _upgrades[tempIndex].startCost;
             case Upgrades.Name.Speed:
-                return _upgrades[tempIndex].currentUpgrade * 2 + _upgrades[tempIndex].startCost;
+                return _upgrades[tempIndex].startCost +  _upgrades[tempIndex].currentUpgrade * 2 + _upgrades[tempIndex].startCost;
             case Upgrades.Name.Tail:
-                return _upgrades[tempIndex].currentUpgrade  *7 * _upgrades[tempIndex].startCost;
+                return _upgrades[tempIndex].startCost +  _upgrades[tempIndex].currentUpgrade  *7 * _upgrades[tempIndex].startCost;
             case Upgrades.Name.Money:
-                return _upgrades[tempIndex].currentUpgrade * 2 * _upgrades[tempIndex].startCost;
+                return _upgrades[tempIndex].startCost +  _upgrades[tempIndex].currentUpgrade * 2 * _upgrades[tempIndex].startCost;
             case Upgrades.Name.Jump:
-                return _upgrades[tempIndex].currentUpgrade * 9 + _upgrades[tempIndex].startCost;
+                return _upgrades[tempIndex].startCost +  _upgrades[tempIndex].currentUpgrade * 9 + _upgrades[tempIndex].startCost;
             case Upgrades.Name.Engine:
-                return _upgrades[tempIndex].currentUpgrade * 12 + _upgrades[tempIndex].startCost;
+                return _upgrades[tempIndex].startCost +  _upgrades[tempIndex].currentUpgrade * 12 + _upgrades[tempIndex].startCost;
             default: return 0;
         }
     }
@@ -136,11 +135,16 @@ public class UpgradeSystem : MonoBehaviour
     {
         boostPower = _upgrades[0].startValue + _upgrades[0].startValue * _upgrades[0].currentUpgrade;
         jumpForce = _upgrades[1].startValue + _upgrades[1].startValue * _upgrades[1].currentUpgrade;
-        acceleration = _upgrades[2].startValue + _upgrades[2].startValue * _upgrades[2].currentUpgrade;
-        float tempMoneyFreq =_upgrades[3].startValue + _upgrades[3].startValue * _upgrades[3].currentUpgrade;
+        acceleration = _upgrades[2].startValue + _upgrades[2].startValue * _upgrades[2].currentUpgrade * .3f;
+        moneyFrequency =_upgrades[3].startValue * 2 + _upgrades[3].startValue * _upgrades[3].currentUpgrade;
         fuelUsage = _upgrades[4].startValue + _upgrades[4].startValue * _upgrades[4].currentUpgrade;
         enginePower = _upgrades[5].startValue + _upgrades[5].startValue * _upgrades[5].currentUpgrade;
-        float tempWings = _upgrades[6].startValue + _upgrades[6].startValue * _upgrades[6].currentUpgrade;
+        wings = _upgrades[6].startValue + _upgrades[6].startValue * _upgrades[6].currentUpgrade * 15;
         rotationSpeed = _upgrades[7].startValue + _upgrades[7].startValue * _upgrades[7].currentUpgrade;
+    }
+
+    public void SaveLevelData(int currentLevel, int money)
+    {
+        InfoContainer.Instance.SaveLevelData(_upgrades, currentLevel, money);
     }
 }

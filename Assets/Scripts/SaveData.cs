@@ -25,15 +25,6 @@ public class SaveData : MonoBehaviour
     {
         _info.upgrades = InfoContainer.Instance.GetData(out _info.money, out _info.currentLevel);
     }
-    
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Load");
-            LoadFromJson();
-        }
-    }
 }
 
 [System.Serializable]
@@ -51,4 +42,5 @@ public class UpgradeData
     public int currentUpgrade;
     public int maxUpgrades;
     public int startCost;
+    public float startValue;
 }

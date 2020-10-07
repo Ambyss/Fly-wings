@@ -19,7 +19,6 @@ public class LevelManager : MonoBehaviour
     private Transform _player;
     public Text heightText;
     public Text distanceText;
-    private int _tempDistance;
     private Vector3 _tempPosition;
     [SerializeField] private GameObject _finishGround;
     private List<Upgrades> _upgrades = new List<Upgrades>(8);
@@ -32,49 +31,40 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Text _lvlEndsAltitude;
     private int _maxHeight;
     private UpgradeSystem _upgradeSystem;
-    
-    private void Awake()
-    {
-        TemporaryInitializationDeleteMeBeforeBuildPls();
-    }
+    private bool _isFinish;
+    [SerializeField] private GameObject _ground;
 
-    private void Start()
+    private void Start()         
     {
         _infoContainer = InfoContainer.Instance;
+        _money = _infoContainer.money;
+        _currentLevel = _infoContainer.currentLevel;
         _upgrades = _infoContainer.GetUpgrades();
         _moneyForLevel = 0;
         _lvlEndsCanvas.enabled = false;
         _upgradeCanvas.enabled = true;
+        _player = GameObject.Find("Player").GetComponent<Transform>();
         DrawMoney();
+        DistAndAltForLevel();
         Time.timeScale = 0;
         _maxHeight = 0;
         _upgradeSystem = GameObject.Find("UpgradeSystem").GetComponent<UpgradeSystem>();
+        _isFinish = false;
     }
 
     private void FixedUpdate()
     {
         _tempPosition = _player.position;
+        if (_tempPosition.x > distance)
+        {
+            _ground.GetComponent<FinishGround>().GroundReached();
+        }
         distanceText.text = "Dist. " + ((int)_tempPosition.x).ToString();
         heightText.text = "Alt. " + ((int)_tempPosition.y).ToString();
         if (_tempPosition.y > _maxHeight)
             _maxHeight = (int)_tempPosition.y;
         if (_tempPosition.x > distance)
             _finishGround.GetComponent<FinishGround>().StartShowing();
-    }
-    
-    private void TemporaryInitializationDeleteMeBeforeBuildPls()
-    {
-        // TODO: change to info container
-        _money = 500;
-        
-        _boostFrequency = 10;
-        _moneyFrequency = 10;
-        
-        _currentLevel = 1; 
-        _height = 2000;
-        distance = 2000;
-        _maxFuel = 500;
-        _player = GameObject.Find("Player").GetComponent<Transform>();
     }
 
     private void DrawMoney()
@@ -84,7 +74,6 @@ public class LevelManager : MonoBehaviour
     
     public float GetBoostPower()
     {
-        Debug.Log(boostPower);
         return boostPower;
     }
 
@@ -95,13 +84,16 @@ public class LevelManager : MonoBehaviour
     
     public void GameEnds(bool isWin)
     {
-        if (isWin)
+        if (isWin && !_isFinish)
         {
-            _currentLevel++;
+            _isFinish = true;
+            if (_maxHeight > _height && (int) _tempPosition.x > distance)
+            {
+                _currentLevel++;
+            }
         }
-        Debug.Log(_money);
-        Debug.Log(_moneyForLevel);
         _money += _moneyForLevel;
+        _infoContainer.money = _money;
         DrawMoney();
         StartCoroutine(EndGame());
     }
@@ -110,9 +102,15 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _lvlEndsCanvas.enabled = true;
-        _lvlEndsAltitude.text = "Altitude: " + _maxHeight.ToString();
-        _lvlEndsDistance.text = "Distance: " + ((int)_tempPosition.x).ToString();
-        _lvlEndsMoney.text = "Money: " + _moneyForLevel.ToString();
+        _lvlEndsAltitude.text = "Altitude: " + _maxHeight + " / " + _height;
+        _lvlEndsDistance.text = "Distance: " + ((int)_tempPosition.x) + " / " + distance;
+        _lvlEndsMoney.text = "Money: " + _moneyForLevel;
+    }
+
+    private void DistAndAltForLevel()
+    {
+        distance = (int)(2000 * _currentLevel * _currentLevel * .5f + 1000);
+        _height = (int)(1000 * _currentLevel * _currentLevel * .1f + 500);
     }
     
     public int GetMoney()
@@ -126,11 +124,6 @@ public class LevelManager : MonoBehaviour
         DrawMoney();
     }
 
-    public List<Upgrades> GetUpgrades()
-    {
-        return _upgrades;
-    }
-
     public void AddMoney()
     {
         _moneyForLevel++;
@@ -138,6 +131,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMenu()
     {
+        _upgradeSystem.SaveLevelData(_currentLevel, _money);
         SceneManager.LoadScene("Menu");
     }
 
@@ -152,4 +146,6 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1;
         _upgradeSystem.ApplyUpgrades();
     }
+    
+    
 }

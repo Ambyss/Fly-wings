@@ -9,11 +9,12 @@ public class InfoContainer : MonoBehaviour
 {
     public static InfoContainer Instance;
 
-    private int _money;
-    private int _currentLevel;
+    public int money;
+    public int currentLevel;
     private List<Upgrades> _upgrades = new List<Upgrades>(8);
     private SaveData _saver;
     private LevelManager _levelManager;
+    
     
     private void Awake()
     {
@@ -46,6 +47,7 @@ public class InfoContainer : MonoBehaviour
             {
                 if (!File.Exists(Application.persistentDataPath + "/PotionData.json"))
                 {
+                    Debug.Log("fitst init");
                     _upgrades.Add(new Upgrades()
                         {upgradeName = Upgrades.Name.Boost, currentUpgrade = 0, maxUpgrades = 5, startCost = 30, startValue = 500});
                     _upgrades.Add(new Upgrades()
@@ -53,21 +55,22 @@ public class InfoContainer : MonoBehaviour
                     _upgrades.Add(new Upgrades()
                         {upgradeName = Upgrades.Name.Speed, currentUpgrade = 0, maxUpgrades = 5, startCost = 30, startValue = 30});
                     _upgrades.Add(new Upgrades()
-                        {upgradeName = Upgrades.Name.Money, currentUpgrade = 0, maxUpgrades = 5, startCost = 30, startValue = 500});
+                        {upgradeName = Upgrades.Name.Money, currentUpgrade = 0, maxUpgrades = 5, startCost = 30, startValue = 10});
                     _upgrades.Add(new Upgrades()
                         {upgradeName = Upgrades.Name.Fuel, currentUpgrade = 0, maxUpgrades = 5, startCost = 30, startValue = .5f});
                     _upgrades.Add(new Upgrades()
                         {upgradeName = Upgrades.Name.Engine, currentUpgrade = 0, maxUpgrades = 3, startCost = 50, startValue = 30});
                     _upgrades.Add(new Upgrades()
-                        {upgradeName = Upgrades.Name.Wing, currentUpgrade = 0, maxUpgrades = 3, startCost = 50, startValue = 1});
+                        {upgradeName = Upgrades.Name.Wing, currentUpgrade = 0, maxUpgrades = 3, startCost = 50, startValue = .05f});
                     _upgrades.Add(new Upgrades()
                         {upgradeName = Upgrades.Name.Tail, currentUpgrade = 0, maxUpgrades = 3, startCost = 50, startValue = .8f});
-                    _currentLevel = 1;
-                    _money = 0;
+                    currentLevel = 1;
+                    money = 1110;
                 }
                 else
                 {
                     _saver.LoadFromJson();
+                    Debug.Log("fie exist");
                 }
             }
             else if (_upgrades.Count == 8)
@@ -103,29 +106,38 @@ public class InfoContainer : MonoBehaviour
 
     public List<UpgradeData> GetData(out int money, out int currentLevel)
     {
-        money = _money;
-        currentLevel = _currentLevel;
+        money = this.money;
+        currentLevel = this.currentLevel;
         List<UpgradeData> temp = new List<UpgradeData>(_upgrades.Capacity);
         for (int i = 0; i < 8; i++)
             temp.Add(new UpgradeData()
             {
                 upgradeName = _upgrades[i].upgradeName, currentUpgrade = _upgrades[i].currentUpgrade,
-                maxUpgrades = _upgrades[i].maxUpgrades, startCost = _upgrades[i].startCost
+                maxUpgrades = _upgrades[i].maxUpgrades, startCost = _upgrades[i].startCost, 
+                startValue = _upgrades[i].startValue
             });
         return temp;
     }
 
     public void SetData(int money, int currentLevel, List<UpgradeData> upgrades)
     {
-        _money = money;
-        _currentLevel = currentLevel;
+        this.money = money;
+        this.currentLevel = currentLevel;
         for (int i = 0; i < 8; i++)
         {
             _upgrades.Add(new Upgrades()
             {
                 upgradeName = upgrades[i].upgradeName, currentUpgrade = upgrades[i].currentUpgrade,
-                maxUpgrades = upgrades[i].maxUpgrades, startCost = upgrades[i].startCost
+                maxUpgrades = upgrades[i].maxUpgrades, startCost = upgrades[i].startCost,
+                startValue = upgrades[i].startValue
             });
         }
+    }
+
+    public void SaveLevelData(List<Upgrades> upgrades, int currentLevel, int money)
+    {
+        _upgrades = upgrades;
+        this.currentLevel = currentLevel;
+        this.money = money;
     }
 }

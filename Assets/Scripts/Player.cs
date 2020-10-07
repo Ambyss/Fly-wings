@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private float _fuelUsageValue;
     private float _accelerationPower;
     private float _enginePower;
+    private bool _fisnished;
+    private float _upForce;
 
     private void Start()
     {
@@ -42,11 +44,13 @@ public class Player : MonoBehaviour
         _fuel = _maxFuel;
         FuelDraw();
         _fuelUsage = true;
-        _upgradeSystem = GameObject.Find("UpgradeSystem").GetComponent<UpgradeSystem>(); // Temp. Change to true upgrade system
+        _upgradeSystem = GameObject.Find("UpgradeSystem").GetComponent<UpgradeSystem>();
+        _fisnished = false;
     }
     
     private void FixedUpdate()
     {
+        _rigidbody.AddForce(new Vector2(0, _upForce));
         _verticalInput = Input.GetAxis("Horizontal");
         if (_acceleration) 
             _verticalInput = 0;
@@ -70,7 +74,7 @@ public class Player : MonoBehaviour
         float temp = (transform.rotation.eulerAngles.z - 90) * Mathf.Deg2Rad;
         _planeRotation = new Vector2(0, Mathf.Cos(temp)).normalized;
         _rigidbody.AddForce(_planeRotation * _enginePower);
-        _fuel -= _fuelUsageValue;
+        _fuel -= 1 / _fuelUsageValue;
         if (_fuel <= 0)
             _fuelUsage = false;
         FuelDraw();
@@ -90,13 +94,33 @@ public class Player : MonoBehaviour
         }
         else if (other.CompareTag("Water"))
         {
-            _levelManager.GameEnds(false);
-            Destroy(this);
+            if (!_fisnished)
+            {
+                _fisnished = true;
+                _levelManager.GameEnds(false);
+                Destroy(this);
+            }
+
         }
         else if (other.CompareTag("Finish"))
         {
-            _levelManager.GameEnds(true);
-            Destroy(this);
+            if (!_fisnished)
+            {
+                _levelManager.GameEnds(true);
+                Destroy(this);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            if (!_fisnished)
+            {
+                _levelManager.GameEnds(true);
+                Destroy(this);
+            }
         }
     }
 
@@ -119,13 +143,13 @@ public class Player : MonoBehaviour
         _fuelLine.transform.localScale = new Vector3(_fuel/_maxFuel, 1, 1);
     }
 
-    public void ApplyUpgrades(float jumpForce, float rotationSpeed, float fuelUsage, float enginePower, float acceleration) // Add wings
+    public void ApplyUpgrades(float jumpForce, float rotationSpeed, float fuelUsage, float enginePower, float acceleration, float wings) // Add wings
     {
         _jumpForce = new Vector2(0, jumpForce);
         _rotationSpeed = rotationSpeed;
         _fuelUsageValue = fuelUsage;
         _enginePower = enginePower;
         _accelerationPower = acceleration;
+        _upForce = wings;
     }
-    
 }
