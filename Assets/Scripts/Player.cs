@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour
     private float _enginePower;
     private bool _fisnished;
     private float _upForce;
+    public ParticleSystem _moneyExplosion;
+    public ParticleSystem _boostExplosion;
 
     private void Start()
     {
@@ -51,7 +54,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody.AddForce(new Vector2(0, _upForce));
-        _verticalInput = Input.GetAxis("Horizontal");
+        //_verticalInput = Input.GetAxis("Horizontal");
         if (_acceleration) 
             _verticalInput = 0;
         if (_verticalInput != 0)
@@ -85,11 +88,13 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Boost"))
         {
             _rigidbody.AddForce(new Vector2(0, _levelManager.GetBoostPower()));
+            Instantiate(_boostExplosion, new Vector3(other.transform.position.x, other.transform.position.y, 1), quaternion.identity);
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Money"))
         {
             _levelManager.AddMoney();
+            Instantiate(_moneyExplosion, new Vector3(other.transform.position.x, other.transform.position.y, 1), quaternion.identity);
             Destroy(other.gameObject);
         }
         else if (other.CompareTag("Water"))
@@ -151,5 +156,20 @@ public class Player : MonoBehaviour
         _enginePower = enginePower;
         _accelerationPower = acceleration;
         _upForce = wings;
+    }
+
+    public void LeftTurn()
+    {
+        _verticalInput = -1;
+    }
+
+    public void RightTurn()
+    {
+        _verticalInput = 1;
+    }
+
+    public void NoTurn()
+    {
+        _verticalInput = 0;
     }
 }

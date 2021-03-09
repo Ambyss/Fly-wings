@@ -58,13 +58,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scenes\JustClass.cs" />
+     <Compile Include="Assets\Scripts\BG.cs" />
      <Compile Include="Assets\Scripts\Camera.cs" />
+     <Compile Include="Assets\Scripts\DestroyComponent.cs" />
+     <Compile Include="Assets\Scripts\Explosion.cs" />
      <Compile Include="Assets\Scripts\FinishGround.cs" />
      <Compile Include="Assets\Scripts\InfoContainer.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\MenuController.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\SaveData.cs" />
+     <Compile Include="Assets\Scripts\Sky.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
      <Compile Include="Assets\Scripts\UpgradeButton.cs" />
      <Compile Include="Assets\Scripts\UpgradeS\Boost.cs" />

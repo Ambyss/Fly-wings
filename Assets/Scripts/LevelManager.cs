@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
     public Text heightText;
     public Text distanceText;
     private Vector3 _tempPosition;
-    [SerializeField] private GameObject _finishGround;
+    [SerializeField] private GameObject[] _finishGround;
     private List<Upgrades> _upgrades = new List<Upgrades>(8);
     public float _maxFuel;
     private int _moneyForLevel;
@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
     private int _maxHeight;
     private UpgradeSystem _upgradeSystem;
     private bool _isFinish;
-    [SerializeField] private GameObject _ground;
+    private Text _groundReacherd;
 
     private void Start()         
     {
@@ -55,16 +55,17 @@ public class LevelManager : MonoBehaviour
     private void FixedUpdate()
     {
         _tempPosition = _player.position;
-        if (_tempPosition.x > distance)
-        {
-            _ground.GetComponent<FinishGround>().GroundReached();
-        }
         distanceText.text = "Dist. " + ((int)_tempPosition.x).ToString();
         heightText.text = "Alt. " + ((int)_tempPosition.y).ToString();
         if (_tempPosition.y > _maxHeight)
             _maxHeight = (int)_tempPosition.y;
         if (_tempPosition.x > distance)
-            _finishGround.GetComponent<FinishGround>().StartShowing();
+        {
+            for (int i = 0; i < _finishGround.Length; i++)
+            {
+                _finishGround[i].GetComponent<FinishGround>().StartShowing(i * 160);
+            }
+        }
     }
 
     private void DrawMoney()
@@ -89,9 +90,13 @@ public class LevelManager : MonoBehaviour
             _isFinish = true;
             if (_maxHeight > _height && (int) _tempPosition.x > distance)
             {
+                _moneyForLevel += _currentLevel * 100;
                 _currentLevel++;
             }
         }
+
+        _moneyForLevel += (int)(_tempPosition.x * .008f);
+        _moneyForLevel += (int)(_maxHeight * .023f);
         _money += _moneyForLevel;
         _infoContainer.money = _money;
         DrawMoney();
@@ -102,8 +107,8 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         _lvlEndsCanvas.enabled = true;
-        _lvlEndsAltitude.text = "Altitude: " + _maxHeight + " / " + _height;
-        _lvlEndsDistance.text = "Distance: " + ((int)_tempPosition.x) + " / " + distance;
+        _lvlEndsAltitude.text = "Altitude: " + _maxHeight + " / " + _height + " (" + ((int)(_maxHeight * .018f) + " coins)");
+        _lvlEndsDistance.text = "Distance: " + ((int)_tempPosition.x) + " / " + distance + " (" + ((int)(_tempPosition.x * .08f) + " coins)");
         _lvlEndsMoney.text = "Money: " + _moneyForLevel;
     }
 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3002135367360191445}
   - component: {fileID: 7819380342656334771}
   - component: {fileID: 9126003344124081436}
+  - component: {fileID: -7098571108023668823}
   m_Layer: 0
   m_Name: Boost
   m_TagString: Boost
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4006316690895932334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.535229, y: -28.142115, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aadf62313e83e674bbca5980ec30c3da, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.075142145, a: 1}
+  m_Sprite: {fileID: 21300000, guid: cc8dbe1d193ebb04aa57452d05b8d3fb, type: 3}
+  m_Color: {r: 1, g: 0.6183172, b: 0.3443396, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -111,3 +112,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-7098571108023668823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006316690895932334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc1c958bbcc35f4986fc9441897a263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

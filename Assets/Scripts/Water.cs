@@ -14,9 +14,13 @@ public class Water : MonoBehaviour
         _playerRB = GameObject.Find("Player").GetComponent<Rigidbody2D>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        transform.position = new Vector2(_player.position.x, -55);
+        if (_player.position.x > transform.position.x + 150)
+        {
+            transform.position = new Vector3(transform.position.x + 400, transform.position.y, transform.position.z);
+        }
+        //transform.position = new Vector2(_player.position.x, -55);
     }
 
     private void OnTriggerStay2D(Collider2D other)

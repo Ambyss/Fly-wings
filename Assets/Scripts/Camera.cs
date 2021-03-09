@@ -21,6 +21,6 @@ public class Camera : MonoBehaviour
     {
         _target = _targetTransform.position;
         _targetVelocity = _targetRigidbody.velocity;
-        transform.position = new Vector3(_target.x + _targetVelocity.x * .15f, _target.y + _targetVelocity.y * .05f, -10);
+        transform.position = new Vector3(_target.x + _targetVelocity.x * .15f, _target.y + _targetVelocity.y * .03f, -10);
     }
 }
